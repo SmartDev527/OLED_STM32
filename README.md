@@ -13,12 +13,12 @@ This repository contains example code for implementing **Frequency-Shift Keying 
 
 ## Overview
 FSK is a modulation scheme where binary data is represented by discrete frequency changes of a carrier signal. This repository provides two methods to implement FSK on STM32 microcontrollers:
-1. **DAC-Based FSK**: Generates sine waves of different frequencies (e.g., 1 kHz and 2 kHz) using the STM32's DAC, DMA, and timers to represent binary 0 and 1.
-2. **SX1276-Based FSK**: Uses the SX1276 LoRa module, interfaced via SPI, to transmit FSK-modulated data over RF (e.g., 434 MHz).
+ **DAC-Based FSK**: Generates sine waves of different frequencies (e.g., 1 kHz and 2 kHz) using the STM32's DAC, DMA, and timers to represent binary 0 and 1.
+
 
 These examples are written for STM32CubeIDE with HAL libraries and assume familiarity with STM32CubeMX for peripheral configuration.
 
-## Approach 1: FSK Using STM32 DAC and Timers
+## Approach : FSK Using STM32 DAC and Timers
 This approach generates FSK signals by switching between two sine waves of different frequencies using the STM32's DAC, DMA, and timers. It’s suitable for low-frequency FSK (e.g., audio range).
 
 ### Code Snippet
@@ -88,14 +88,6 @@ int main(void) {
 - **Output**: Connect DAC output (e.g., PA4) to an external circuit.
 - **Notes**: Adjust `SINE_SAMPLES` and `HAL_Delay` for desired bit rate and frequency deviation.
 
-
-
-### Configuration
-- **Hardware**: STM32 (e.g., STM32F103) and SX1276 LoRa module.
-- **STM32CubeMX Setup**:
-  - Configure SPI1 (e.g., PA4 as CS, PA5–PA7 for SPI).
-  - Connect SX1276: SCK, MISO, MOSI, CS, and optionally DIO0 for TX done interrupt.
-- **Notes**: Adjust frequency (e.g., 434 MHz) and modulation parameters in SX1276 registers. Consider using a library like RadioLib for easier configuration.
 
 ## Setup Instructions
 1. **Hardware Setup**:
